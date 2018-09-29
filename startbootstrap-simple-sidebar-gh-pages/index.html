@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        학습 진행 상황
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+    </div>
+    <!-- /wrapper -->
+
+    <!-- mainbody -->
+    <div class="row align-items-start">
+        <!-- tutorial area -->
+        <div class="col-4" style="background-color:palevioletred;height:600px" >
+            <h1>튜토리얼 영역</h1>
+        </div>
+
+        <!-- block area -->
+        <div class="col-4" style="background-color:lemonchiffon;height:600px" >
+            <h1>블록 영역</h1>
+        </div>
+
+        <!-- code area -->
+        <div class="col-4" style="background-color:cadetblue;height:600px" >
+            <h1>코드 영역</h1>
+        </div>
+    </div>
+
+     <!-- bottom Navigation -->
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom" id="mainNav">
+        <div class="col-sm-3">
+            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"> <span class="navbar-toggler-icon"></span></a>  
+        </div>
+        <div class="col-sm-3" style="text-align: center">
+            <a href="#" class="btn btn-secondary">이전</a>  
+        </div>
+        <div class="col-sm-3" style="text-align: center">
+            <a href="#" class="btn btn-secondary">다음</a>  
+        </div>
+        <div class="col-sm-3" style="text-align: center">
+            <a href="#" class="btn btn-secondary">힌트</a>  
+        </div>
+      </nav>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>
