@@ -238,7 +238,7 @@ Code.LANG = Code.getLang();
  * List of tab names.
  * @private
  */
-Code.TABS_ = ['blocks', 'javascript'];
+Code.TABS_ = ['blocks', 'javascript'/*, 'java'*/];
 
 Code.selected = 'blocks';
 
@@ -248,30 +248,30 @@ Code.selected = 'blocks';
  */
 Code.tabClick = function(clickedName) {
   // If the XML tab was open, save and render the content.
-  if (document.getElementById('tab_xml').className == 'tabon') {
-    var xmlTextarea = document.getElementById('content_xml');
-    var xmlText = xmlTextarea.value;
-    var xmlDom = null;
-    try {
-      xmlDom = Blockly.Xml.textToDom(xmlText);
-    } catch (e) {
-      var q =
-          window.confirm(MSG['badXml'].replace('%1', e));
-      if (!q) {
-        // Leave the user on the XML tab.
-        return;
-      }
-    }
-    if (xmlDom) {
-      Code.workspace.clear();
-      Blockly.Xml.domToWorkspace(xmlDom, Code.workspace);
-    }
-  }
+  // if (document.getElementById('tab_xml').className == 'tabon') {
+  //   var xmlTextarea = document.getElementById('content_xml');
+  //   var xmlText = xmlTextarea.value;
+  //   var xmlDom = null;
+  //   try {
+  //     xmlDom = Blockly.Xml.textToDom(xmlText);
+  //   } catch (e) {
+  //     var q =
+  //         window.confirm(MSG['badXml'].replace('%1', e));
+  //     if (!q) {
+  //       // Leave the user on the XML tab.
+  //       return;
+  //     }
+  //   }
+  //   if (xmlDom) {
+  //     Code.workspace.clear();
+  //     Blockly.Xml.domToWorkspace(xmlDom, Code.workspace);
+  //   }
+  // }
 
   // if (document.getElementById('tab_blocks').className == 'tabon') {
   //   Code.workspace.setVisible(false);
   // }
-  // Deselect all tabs and hide all panes.
+  // //Deselect all tabs and hide all panes.
   // for (var i = 0; i < Code.TABS_.length; i++) {
   //   var name = Code.TABS_[i];
   //   document.getElementById('tab_' + name).className = 'taboff';
@@ -303,18 +303,21 @@ Code.renderContent = function() {
   //   var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
   //   xmlTextarea.value = xmlText;
   //   xmlTextarea.focus();
-  // }
+  // // }
   if (content.id == 'content_javascript') {
     Code.attemptCodeGeneration(Blockly.JavaScript, 'js');
-  } else if (content.id == 'content_python') {
-    Code.attemptCodeGeneration(Blockly.Python, 'py');
-  } else if (content.id == 'content_php') {
-    Code.attemptCodeGeneration(Blockly.PHP, 'php');
-  } else if (content.id == 'content_dart') {
-    Code.attemptCodeGeneration(Blockly.Dart, 'dart');
-  } else if (content.id == 'content_lua') {
-    Code.attemptCodeGeneration(Blockly.Lua, 'lua');
   }
+  // else
+  // if (content.id == 'content_java') {
+  //    Code.attemptCodeGeneration(Blockly.Java, 'java');
+  //  }
+   //else if (content.id == 'content_php') {
+  //   Code.attemptCodeGeneration(Blockly.PHP, 'php');
+  // } else if (content.id == 'content_dart') {
+  //   Code.attemptCodeGeneration(Blockly.Dart, 'dart');
+  // } else if (content.id == 'content_lua') {
+  //   Code.attemptCodeGeneration(Blockly.Lua, 'lua');
+  // }
 };
 
 /**
