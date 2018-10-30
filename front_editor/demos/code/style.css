@@ -112,20 +112,21 @@ td {
 }
 .content {
   visibility: hidden;
-  margin: 0;
   padding: 1ex;
   position: absolute;
   direction: ltr;
+  background-color:white!important;
 }
 pre.content {
   border: 1px solid #ccc;
   overflow: scroll;
   left: 10px !important;
   height: 350px !important;
-  width: 95% !important;
+  width: 90% !important;
 }
 #content_blocks {
   padding: 0;
+  margin-right:20px;
   left: 10px !important;
   height: 350px !important;
   width: 95% !important;
