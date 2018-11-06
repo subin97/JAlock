@@ -13,10 +13,6 @@
     <script src="../../blocks_compressed.js"></script>
     <script src="../../javascript_compressed.js"></script>
     <script src="../../java_compressed.js"></script>
-    <!-- <script src="../../python_compressed.js"></script>
-    <script src="../../php_compressed.js"></script>
-    <script src="../../lua_compressed.js"></script>
-    <script src="../../dart_compressed.js"></script> -->
 
     <script src="code.js"></script>
     <!-- Bootstrap core CSS -->
@@ -27,12 +23,14 @@
 
   </head>
 <style>
-  body{
-    font-family: 'Nanum Gothic', sans-serif;
-  }
-  #area{
+body{
+  font-family: 'Nanum Gothic', sans-serif;
+}
+#area{
     padding:20px;
     padding-left:30px;
+    overflow:scroll;
+    height:550px;
   }
 </style>
 <body>
@@ -65,27 +63,21 @@
         <!-- /#sidebar-wrapper -->
     </div>
     <!-- /wrapper -->
-
     <!-- mainbody -->
     <div class="row align-items-start">
         <!-- tutorial area -->
-        <div class="col-4" id="area" style="background-color:rgb(209, 164, 175);height:600px" >
+        <div class="col-4" id="area" style="background-color:rgb(209, 164, 175);" >
             <!--<h2><b>튜토리얼 영역</b></h2>-->
-            
-            <h4><img src="logo.png" height="70px"></img><b>               1. 자기소개하기</b></h4>
-            <p>자바는 운영 체제의 종류에 관계없이 동일한 모습으로 실행할 수 있는 프로그램을 작성하기 위해 만들어진 프로그래밍 언어입니다.</p>
-            <p>자바는 단순하지만 유연하고 유지 보수가 용이한 객체 지향적인 언어로 알려져 있습니다.</p>
-            <p>자바를 처음 접해보는 초심자들을 위해 블록 쌓기로 쉽게 설명해 드리겠습니다. 걱정하지 말고 차근차근 따라오세요!</p>
-            <hr>
-               <p><b>자기 이름을 출력해 봅시다.</b></p>
-              <p>다음과 같이 system.out.println 블록을 갖다 놓고 큰 따옴표 안에 이름을 입력하세요.
-              <p>System.out.println(“홍길동”);</p>
-              실행 버튼을 클릭하여 코드를 실행하세요.</p>
-            </p>
+            <h4><img src="logo.png" height="70px"></img>
+              <?php
+                if( empty($_GET['id']) == false ) {
+                  echo file_get_contents($_GET['id'].".txt");
+                }
+              ?>
         </div>
 
         <!-- block area -->
-        <div class="col-4" id="area" style="background-color:rgb(240,240,240);height:600px" >
+        <div class="col-4" id="area" style="background-color:rgb(240,240,240);" >
             <!-- <h2>블록 영역</h2> -->
             <table width="100%" height="100%">
               <tr>
@@ -104,16 +96,6 @@
                   <table width="100%">
                     <tr id="tabRow" height="1em">
                       <td id="tab_blocks" class="tabon">...</td>
-                      <!-- <td class="tabmin">&nbsp;</td>
-                      <td id="tab_javascript" class="taboff">JavaScript</td> -->
-                      <!-- <td class="tabmin">&nbsp;</td>
-                      <td id="tab_python" class="taboff">Python</td> -->
-                      <!-- <td class="tabmin">&nbsp;</td>
-                      <td id="tab_php" class="taboff">PHP</td> -->
-                      <!-- <td class="tabmin">&nbsp;</td>
-                      <td id="tab_lua" class="taboff">Lua</td> -->
-                      <!-- <td class="tabmin">&nbsp;</td>
-                      <td id="tab_dart" class="taboff">Dart</td> -->
                       <td class="tabmin">&nbsp;</td>
                       <!-- <td id="tab_xml" class="taboff">XML</td> -->
                       <td class="tabmax">
@@ -438,7 +420,7 @@
         </div>
 
         <!-- code area -->
-        <div class="col-4"  id="area" style="background-color:rgb(209, 164, 175);height:600px" >
+        <div class="col-4"  id="area" style="background-color:rgb(209, 164, 175);" >
             <h2><b>JAVA code</b></h2>
             <table width="50%" height="50%">
               <tr>
@@ -503,20 +485,31 @@ else
           </div>
     </div>
     <!-- /mainbody -->
-
+    
+    <!--get current id-->
+        <?php
+        if($_GET['id']==1) {
+        		$id_bef = 1;
+        	} else {
+        		$id_bef = $_GET['id']-1;
+        	}
+        	if($_GET['id']==24) {
+        	  // end page num
+        		$id_aft = 24;
+        	} else {
+        		$id_aft = $_GET['id']+1;
+        	}
+        	?>
      <!-- bottom Navigation -->
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom" id="mainNav">
         <div class="col-sm-3">
             <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"> <span class="navbar-toggler-icon"></span></a>
         </div>
         <div class="col-sm-3" style="text-align: center">
-            <a href="#" class="btn btn-secondary">이전</a>
+            <a href="/front_editor/demos/code/index_front.php?id=<?php echo $id_bef ?>" class="btn btn-secondary">이전</a>
         </div>
         <div class="col-sm-3" style="text-align: center">
-            <a href="#" class="btn btn-secondary">다음</a>
-        </div>
-        <div class="col-sm-3" style="text-align: center">
-            <a href="#" class="btn btn-secondary">힌트</a>
+            <a href="/front_editor/demos/code/index_front.php?id=<?php echo $id_aft ?>" class="btn btn-secondary">다음</a>
         </div>
       </nav>
 
