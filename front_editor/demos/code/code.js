@@ -338,6 +338,7 @@ Code.attemptCodeGeneration = function(generator, prettyPrintType) {
       content.innerHTML = code;
     }
   }
+  console.log(code);
 };
 
 /**

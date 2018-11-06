@@ -24,7 +24,8 @@
     <!-- Custom styles for this template -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
-</head>
+
+  </head>
 <style>
   body{
     font-family: 'Nanum Gothic', sans-serif;
@@ -461,6 +462,44 @@
 
             <pre id="content_javascript" class="content"></pre>
             <!-- <pre id="content_java" class="content"></pre> -->
+
+
+<!-- mysql DB connection, pop-up -->
+<?php
+$userAnswer = "answer";
+
+$conn = mysqli_connect("localhost","root","123456", "jalock", "3307");
+
+if (mysqli_connect_errno()){
+    echo "연결실패<br>".mysqli_connect_error();
+}
+
+$query = "SELECT * FROM answer1 WHERE id=1";
+$result = mysqli_query($conn, $query);
+
+$row = mysqli_fetch_array($result);
+$escaped['id'] = htmlspecialchars($row['id']);
+$escaped['answer'] = htmlspecialchars($row['answer']);
+
+if($userAnswer == $escaped['answer'])
+{
+?>
+<script language="javascript">
+  var correct = window.open('', 'popup', 'width=300, height=200, scrollbars=0, toolbar=0, menubar=no');
+  correct.document.write("<p align = 'center'> 정답입니다! </p>");
+</script>
+<?php
+}
+else
+{
+?>
+<script language="javascript">
+  var wrong = window.open('', 'popup', 'width=300, height=200, scrollbars=0, toolbar=0, menubar=no');
+  wrong.document.write("<p align = 'center'> 오답입니다! </p>");
+</script>
+<?php
+}
+?>
           </div>
     </div>
     <!-- /mainbody -->
