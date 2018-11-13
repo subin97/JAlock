@@ -32,6 +32,9 @@ body{
     overflow:scroll;
     height:550px;
   }
+  #content_javascript{
+    visibility: hidden !important;
+  }
 </style>
 <body>
     <div id="wrapper">
@@ -441,51 +444,53 @@ body{
                 </td> -->
               </tr>
             </table>
-
             <pre id="content_javascript" class="content"></pre>
+            <?php
+              echo "code: ".$_GET['code'];
+              ?>
             <!-- <pre id="content_java" class="content"></pre> -->
 
 
-<!-- mysql DB connection, pop-up -->
-<?php
-$userAnswer = "answer";
+            <!-- mysql DB connection, pop-up -->
+            <?php
+            $userAnswer = "answer";
 
-$conn = mysqli_connect("localhost","root","123456", "jalock", "3307");
+            $conn = mysqli_connect("localhost","root","123456", "jalock", "3306");
 
-if (mysqli_connect_errno()){
-    echo "연결실패<br>".mysqli_connect_error();
-}
+            if (mysqli_connect_errno()){
+                echo "연결실패<br>".mysqli_connect_error();
+            }
 
-$query = "SELECT * FROM answer1 WHERE id=1";
-$result = mysqli_query($conn, $query);
+            $query = "SELECT * FROM answer1 WHERE id=1";
+            $result = mysqli_query($conn, $query);
 
-$row = mysqli_fetch_array($result);
-$escaped['id'] = htmlspecialchars($row['id']);
-$escaped['answer'] = htmlspecialchars($row['answer']);
+            $row = mysqli_fetch_array($result);
+            $escaped['id'] = htmlspecialchars($row['id']);
+            $escaped['answer'] = htmlspecialchars($row['answer']);
 
-if($userAnswer == $escaped['answer'])
-{
-?>
-<script language="javascript">
-  var correct = window.open('', 'popup', 'width=300, height=200, scrollbars=0, toolbar=0, menubar=no');
-  correct.document.write("<p align = 'center'> 정답입니다! </p>");
-</script>
-<?php
-}
-else
-{
-?>
-<script language="javascript">
-  var wrong = window.open('', 'popup', 'width=300, height=200, scrollbars=0, toolbar=0, menubar=no');
-  wrong.document.write("<p align = 'center'> 오답입니다! </p>");
-</script>
-<?php
-}
-?>
+            if($userAnswer == $escaped['answer'])
+            {
+            ?>
+            <script language="javascript">
+              var correct = window.open('', 'popup', 'width=300, height=200, scrollbars=0, toolbar=0, menubar=no');
+              correct.document.write("<p align = 'center'> 정답입니다! </p>");
+            </script>
+            <?php
+            }
+            else
+            {
+            ?>
+            <script language="javascript">
+              var wrong = window.open('', 'popup', 'width=300, height=200, scrollbars=0, toolbar=0, menubar=no');
+              wrong.document.write("<p align = 'center'> 오답입니다! </p>");
+            </script>
+            <?php
+            }
+            ?>
           </div>
     </div>
     <!-- /mainbody -->
-    
+
     <!--get current id-->
         <?php
         if($_GET['id']==1) {
@@ -506,10 +511,10 @@ else
             <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"> <span class="navbar-toggler-icon"></span></a>
         </div>
         <div class="col-sm-3" style="text-align: center">
-            <a href="/front_editor/demos/code/index_front.php?id=<?php echo $id_bef ?>" class="btn btn-secondary">이전</a>
+            <a href="/jalock/front_editor/demos/code/index_front.php?id=<?php echo $id_bef ?>" class="btn btn-secondary">이전</a>
         </div>
         <div class="col-sm-3" style="text-align: center">
-            <a href="/front_editor/demos/code/index_front.php?id=<?php echo $id_aft ?>" class="btn btn-secondary">다음</a>
+            <a href="/jalock/front_editor/demos/code/index_front.php?id=<?php echo $id_aft ?>" class="btn btn-secondary">다음</a>
         </div>
       </nav>
 

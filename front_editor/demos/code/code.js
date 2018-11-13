@@ -21,6 +21,7 @@
  * @fileoverview JavaScript for Blockly's Code demo.
  * @author fraser@google.com (Neil Fraser)
  */
+
 'use strict';
 
 /**
@@ -520,6 +521,7 @@ Code.initLanguage = function() {
  * Execute the user's code.
  * Just a quick and dirty eval.  Catch infinite loops.
  */
+
 Code.runJS = function() {
   Blockly.JavaScript.INFINITE_LOOP_TRAP = '  checkTimeout();\n';
   var timeouts = 0;
@@ -529,6 +531,7 @@ Code.runJS = function() {
     }
   };
   var code = Blockly.JavaScript.workspaceToCode(Code.workspace);
+  window.location.href = "http://127.0.0.1/jalock/front_editor/demos/code/index_front.php?id=2"+"&code=" + code;
   Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
   try {
     eval(code);
