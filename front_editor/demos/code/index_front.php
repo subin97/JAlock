@@ -27,14 +27,47 @@ body{
   font-family: 'Nanum Gothic', sans-serif;
 }
 #area{
+    display: inline-block;
     padding:20px;
     padding-left:30px;
     overflow:scroll;
-    height:550px;
+    height:35rem;
+    padding-bottom: 55.33px;
+  }
+  #mycontent{
+    background-color: white;
+    height: 400px;
+    width: 90%;
+    padding:20px;
   }
   #content_javascript{
     visibility: hidden !important;
   }
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 5;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
 </style>
 <body>
     <div id="wrapper">
@@ -47,19 +80,44 @@ body{
                     </a>
                 </li>
                 <li>
-                    <a href="#">01.자바 소개</a>
+                    <a href="javascript:doDisplay(1);">01.자바 소개</a>
                 </li>
+                <div id="ch1" style="display:none;">
+                  <li>
+                    <a href="#">test1</a>
+                  </li>
+                  <li>
+                    <a href="#">test1</a>
+                  </li>
+                  <li>
+                    <a href="#">test1</a>
+                  </li>
+                  <li>
+                    <a href="#">test1</a>
+                  </li>
+                </div>
                 <li>
-                    <a href="#">02. 자바 프로그래밍 기초</a>
+                    <a href="javascript:doDisplay(2);">02. 자바 프로그래밍 기초</a>
                 </li>
-                <li>
+                <div id="ch2" style="display:none;">
+                  <li>
+                    <a href="#">test2</a>
+                  </li>
+                  <li>
+                    <a href="#">test2</a>
+                  </li>
+                  <li>
+                    <a href="#">test2</a>
+                  </li>
+                  <li>
+                    <a href="#">test2</a>
+                  </li>
+                </div>
+                <li id="ch3">
                     <a href="#">03. 객체 지향 프로그래밍</a>
                 </li>
-                <li>
+                <li id="ch4">
                     <a href="#">04. 상속, 인터페이스</a>
-                </li>
-                <li>
-                    <a href="#">05. 여러 가지 클래스</a>
                 </li>
             </ul>
         </div>
@@ -425,68 +483,54 @@ body{
         <!-- code area -->
         <div class="col-4"  id="area" style="background-color:rgb(209, 164, 175);" >
             <h2><b>JAVA code</b></h2>
-            <table width="50%" height="50%">
+            <table width="0%" height="0%">
               <tr>
                 <td colspan=2>
-                  <table width="50%">
+                  <table width="0%">
                     <tr id="tabRow" height="1em">
-                      <td id="tab_javascript" class="tabon">JavaScript</td>
-                      <!-- <td id="tab_java" class="tabon">Java</td> -->
+                      <td id="tab_javascript" class="tabon">Java</td>
+                       <!-- <td id="tab_java" class="tabon">Java</td> -->
                     </tr>
-
                   </table>
                 </td>
               </tr>
               <tr>
                 <td height="100%" colspan=2 id="content_area">
                 </td>
-                <!-- <td height="100%" colspan=2 id="content_area">
-                </td> -->
+                <td height="100%" colspan=2 id="content_area">
+                </td>
               </tr>
             </table>
             <pre id="content_javascript" class="content"></pre>
+
+            <div id = "mycontent">
             <?php
-              echo "code: ".$_GET['code'];
-              ?>
-            <!-- <pre id="content_java" class="content"></pre> -->
+              $conn = mysqli_connect("localhost", "root", "123456", "jalock", "3306");
+              if (mysqli_connect_errno()){
+                  echo "연결실패<br>".mysqli_connect_error();
+              }
+              $query = "SELECT * FROM answer1 WHERE num=".$_GET['id'];
+              $result = mysqli_query($conn, $query);
 
+              $row = mysqli_fetch_array($result);
+              $escaped['num'] = htmlspecialchars($row['num']);
+              $escaped['answer'] = htmlspecialchars($row['answer']);
+              $escaped['java'] = htmlspecialchars($row['java']);
 
-            <!-- mysql DB connection, pop-up -->
-            <?php
-            $userAnswer = "answer";
+              $userAnswer = $_GET['code'];
+              //echo "usercode: ".$userAnswer;
+              //echo "answer: ".$escaped['answer'];
+              echo $escaped['java'];
 
-            $conn = mysqli_connect("localhost","root","123456", "jalock", "3306");
-
-            if (mysqli_connect_errno()){
-                echo "연결실패<br>".mysqli_connect_error();
-            }
-
-            $query = "SELECT * FROM answer1 WHERE id=1";
-            $result = mysqli_query($conn, $query);
-
-            $row = mysqli_fetch_array($result);
-            $escaped['id'] = htmlspecialchars($row['id']);
-            $escaped['answer'] = htmlspecialchars($row['answer']);
-
-            if($userAnswer == $escaped['answer'])
-            {
+              if($userAnswer === $escaped['answer']){
+                echo "정답입니다.";
+              }
+              else{
+                echo "오답입니다.";
+              }
             ?>
-            <script language="javascript">
-              var correct = window.open('', 'popup', 'width=300, height=200, scrollbars=0, toolbar=0, menubar=no');
-              correct.document.write("<p align = 'center'> 정답입니다! </p>");
-            </script>
-            <?php
-            }
-            else
-            {
-            ?>
-            <script language="javascript">
-              var wrong = window.open('', 'popup', 'width=300, height=200, scrollbars=0, toolbar=0, menubar=no');
-              wrong.document.write("<p align = 'center'> 오답입니다! </p>");
-            </script>
-            <?php
-            }
-            ?>
+            </div>
+
           </div>
     </div>
     <!-- /mainbody -->
@@ -528,6 +572,17 @@ body{
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+
+    var bDisplay = true;
+    function doDisplay(a){
+        var con = document.getElementById("ch"+a);
+        if(con.style.display=='none'){
+            con.style.display = 'block';
+        }else{
+            con.style.display = 'none';
+        }
+    }
+
     </script>
 
 </body>

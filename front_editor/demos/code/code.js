@@ -531,7 +531,9 @@ Code.runJS = function() {
     }
   };
   var code = Blockly.JavaScript.workspaceToCode(Code.workspace);
-  window.location.href = "http://127.0.0.1/jalock/front_editor/demos/code/index_front.php?id=2"+"&code=" + code;
+  var id = 1;
+
+  window.location.href = "http://127.0.0.1/jalock/front_editor/demos/code/index_front.php?id="+id+"&code=" + code;
   Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
   try {
     eval(code);
