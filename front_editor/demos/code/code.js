@@ -523,6 +523,7 @@ Code.initLanguage = function() {
  */
 
 Code.runJS = function() {
+
   Blockly.JavaScript.INFINITE_LOOP_TRAP = '  checkTimeout();\n';
   var timeouts = 0;
   var checkTimeout = function() {
@@ -531,9 +532,12 @@ Code.runJS = function() {
     }
   };
   var code = Blockly.JavaScript.workspaceToCode(Code.workspace);
-  var id = 1;
-
+  var id=1;
+  //$.get("index_front.php", {code: code});
+//  var id = <? php echo json_encode($id); ?>;
   window.location.href = "http://127.0.0.1/jalock/front_editor/demos/code/index_front.php?id="+id+"&code=" + code;
+// code 변수를 php파일로 넘기기 위해 window.location.href을 통해 get방식으로 변수 전달
+
   Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
   try {
     eval(code);

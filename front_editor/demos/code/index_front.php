@@ -13,8 +13,8 @@
     <script src="../../blocks_compressed.js"></script>
     <script src="../../javascript_compressed.js"></script>
     <script src="../../java_compressed.js"></script>
+    <script type="text/javascript" src="code.js"></script>
 
-    <script src="code.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -131,8 +131,10 @@ body{
             <!--<h2><b>튜토리얼 영역</b></h2>-->
             <h4><img src="logo.png" height="70px"></img>
               <?php
+                global $id;
+                $id = $_GET['id'];
                 if( empty($_GET['id']) == false ) {
-                  echo file_get_contents($_GET['id'].".txt");
+                  echo file_get_contents("tutorials/".$_GET['id'].".txt");
                 }
               ?>
         </div>
@@ -518,19 +520,19 @@ body{
               $escaped['java'] = htmlspecialchars($row['java']);
 
               $userAnswer = $_GET['code'];
-              //echo "usercode: ".$userAnswer;
-              //echo "answer: ".$escaped['answer'];
-              echo $escaped['java'];
+              echo "usercode: ".$userAnswer."<br>";
+              echo "answer: ".$escaped['answer']."<br>";
 
               if($userAnswer === $escaped['answer']){
-                echo "정답입니다.";
+                echo $escaped['java'];
               }
-              else{
+              else if($_GET['code']!==""){
                 echo "오답입니다.";
+              }
+              else {
               }
             ?>
             </div>
-
           </div>
     </div>
     <!-- /mainbody -->
@@ -555,10 +557,10 @@ body{
             <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"> <span class="navbar-toggler-icon"></span></a>
         </div>
         <div class="col-sm-3" style="text-align: center">
-            <a href="/jalock/front_editor/demos/code/index_front.php?id=<?php echo $id_bef ?>" class="btn btn-secondary">이전</a>
+            <a href="/jalock/front_editor/demos/code/index_front.php?id=<?php echo $id_bef ?>&code=" class="btn btn-secondary">이전</a>
         </div>
         <div class="col-sm-3" style="text-align: center">
-            <a href="/jalock/front_editor/demos/code/index_front.php?id=<?php echo $id_aft ?>" class="btn btn-secondary">다음</a>
+            <a href="/jalock/front_editor/demos/code/index_front.php?id=<?php echo $id_aft ?>&code=" class="btn btn-secondary">다음</a>
         </div>
       </nav>
 
