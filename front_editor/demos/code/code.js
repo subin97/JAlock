@@ -522,8 +522,16 @@ Code.initLanguage = function() {
  * Just a quick and dirty eval.  Catch infinite loops.
  */
 
+var pid;
+function getPageId(){
+  var url = document.URL;
+  //window.alert(url);
+  var a = url.split("id=");
+  var b = a[1].split("&");
+  // window.alert(b[0]);
+  pid=b[0];
+}
 Code.runJS = function() {
-
   Blockly.JavaScript.INFINITE_LOOP_TRAP = '  checkTimeout();\n';
   var timeouts = 0;
   var checkTimeout = function() {
@@ -532,10 +540,11 @@ Code.runJS = function() {
     }
   };
   var code = Blockly.JavaScript.workspaceToCode(Code.workspace);
-  var id=1;
+  //var id=document.getElementById(id);
+
   //$.get("index_front.php", {code: code});
 //  var id = <? php echo json_encode($id); ?>;
-  window.location.href = "http://127.0.0.1/jalock/front_editor/demos/code/index_front.php?id="+id+"&code=" + code;
+  window.location.href = "http://127.0.0.1/jalock/front_editor/demos/code/index_front.php?id="+pid+"&code=" + code;
 // code 변수를 php파일로 넘기기 위해 window.location.href을 통해 get방식으로 변수 전달
 
   Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
