@@ -113,27 +113,44 @@ color: #777;
 
 
 </style>
-
+<script type="text/javascript">
+function checkid(){
+	var nickname = document.getElementById("inputEmail").value;
+	if(nickname)
+	{
+		url = "/jalock/front_editor/demos/code/chkid.php?nickname="+nickname;
+			window.open(url,"chkid","width=300,height=100");
+		}else{
+			alert("닉네임을 입력하세요");
+		}
+	}
+</script>
 <body>
   <div class="container">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
-          <div class="card-body">
+          <div class="card-body check">
             <h5 class="card-title text-center">회원가입</h5>
-            <form class="form-signin" method="post" action="/jalock/front_editor/demos/code/signup_back.php">
-              <div class="form-label-group">
-                <input type="text" id="inputEmail" name="nickname" class="form-control" placeholder="Your nickname" required autofocus>
-                <label for="inputEmail">닉네임</label>
+              <!-- <p id="id_check">닉네임이 실시간으로 검사됩니다</p> -->
+                <form class="form-signin" method="post" action="/jalock/front_editor/demos/code/signup_back.php">
+                  <div class="form-label-group">
+                    <input type="text" id="inputEmail" name="nickname" class="form-control" placeholder="Your nickname" required autofocus>
+                    <label for="inputEmail">닉네임</label>
+                  </div>
+                  <div>
+                    <button class="btn btn-lg btn-primary btn-block text-uppercase" onClick="checkid()">중복 검사</button>
+                  </div>
+                  <hr>
+                  <div class="form-label-group">
+                    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+                    <label for="inputPassword">비밀번호</label>
+                  </div>
+                  <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">회원가입</button>
+                </form>
               </div>
-              <div class="form-label-group">
-                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-                <label for="inputPassword">비밀번호</label>
-              </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">회원가입</button>
-            </form>
-          </div>
-        </div>
+            </div>
+
       </div>
     </div>
   </div>

@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,6 +71,15 @@ body{
 }
 </style>
 <body onload="getPageId()">
+  <?php
+  $conn = mysqli_connect("localhost", "root", "123456", "jalock", "3306");
+  if (mysqli_connect_errno()){
+      echo "연결실패<br>".mysqli_connect_error();
+  }
+  $query = "UPDATE user SET current=".$_GET['id']." WHERE nickname='".$_SESSION['nickname']."'";
+  $result = mysqli_query($conn, $query);
+
+  ?>
     <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
@@ -213,10 +223,7 @@ body{
             <div id = "mycontent">
 
             <?php
-              $conn = mysqli_connect("localhost", "root", "123456", "jalock", "3306");
-              if (mysqli_connect_errno()){
-                  echo "연결실패<br>".mysqli_connect_error();
-              }
+
               $query = "SELECT * FROM answer1 WHERE num=".$_GET['id'];
               $result = mysqli_query($conn, $query);
 
@@ -260,14 +267,26 @@ body{
         	?>
      <!-- bottom Navigation -->
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom" id="mainNav">
-        <div class="col-sm-3">
+        <div class="col-sm-1">
             <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"> <span class="navbar-toggler-icon"></span></a>
+        </div>
+        <div class="col-sm-2">
+          <?php
+            if(isset($_SESSION['nickname'])){
+              echo "<p style=\"color:white;margin-top:1rem\">{$_SESSION['nickname']} 님 환영합니다.</p>";
+              }else{
+              echo "<script>alert('잘못된 접근입니다.'); history.back();</script>";
+            }
+          ?>
         </div>
         <div class="col-sm-3" style="text-align: center">
             <a href="/jalock/front_editor/demos/code/index_front.php?id=<?php echo $id_bef ?>&code=" class="btn btn-secondary">이전</a>
         </div>
         <div class="col-sm-3" style="text-align: center">
             <a href="/jalock/front_editor/demos/code/index_front.php?id=<?php echo $id_aft ?>&code=" class="btn btn-secondary">다음</a>
+        </div>
+        <div class="col-sm-3" style="text-align: center">
+           <a href="/jalock/front_editor/demos/code/signout.php" class="btn btn-secondary">로그아웃</a>
         </div>
       </nav>
 
@@ -294,7 +313,6 @@ body{
 
 
     </script>
-
 
 </body>
 
