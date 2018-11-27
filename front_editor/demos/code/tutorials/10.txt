@@ -1,0 +1,20 @@
+<b>03. if-else문</b></h4>
+<p>if문만으로는 좀 더 복잡한 상황을 처리하는데 부족합니다. if 뒤에 조건문이 거짓일 때도 무엇인가를 실행하고 싶을 때는 if-else문을 사용합니다.</p>
+<p>if(조건문) { </p>
+<p align="center"><수행할 문장1></p>
+<p align="center"><수행할 문장2></p>
+<p align="center">...</p>
+<p>} else { </p>
+<p align="center"><수행할 문장A></p>
+<p align="center"><수행할 문장B></p>
+<p align="center">...</p>
+<p>}</p>
+<p>조건문이 참이면 if문 바로 다음의 문장들을 수행하고 조건문이 거짓이면 else문 다음의 문장들을 수행하게 됩니다.
+<br>다음은 if-else문의 예입니다.</p>
+<img src="ifnum.png" width=344 height=153>
+<p>num이 0보다 큰 7이기 때문에 조건문이 참이 돼서 ‘양수입니다’가 출력됩니다. 만약 num이 –5였다면 조건문이 거짓이 돼서 ‘음수입니다’가 출력됐을 것입니다.</p>
+<hr>
+<p><b>미션</b></p>
+<p>if else블록을 이용해서 점수가 70점 이상이면 ‘합격입니다’가 출력되고 아니면 ‘불합격입니다’가 출력되도록 만드세요.</p>
+<p>1. 위에서 변수를 만들었던 것처럼 score라는 변수를 만들고 값을 80으로 지정하세요.</p>
+<p>2. Logic에 있는 if do 블록을 끌어다가 <img src="설정.png" width=24 height=24>버튼을 눌러서 if문을 if else문으로 바꾸세요.<br><img src="ifelse.png" width=77 height=98><br> if문 조건을 블록들을 이용해서 score≥70으로 설정하세요. do 옆에는 print(“합격입니다”) 블록을 넣고 else 옆에는 print(“불합격입니다”)블록을 넣으세요.</p>

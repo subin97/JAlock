@@ -1,0 +1,24 @@
+<b>04. if-else if-else문</b></h4>
+<p>else if절을 이용하면 조건문의 흐름을 좀 더 자유롭게 제어할 수 있습니다.</p>
+<p>if(조건문) { </p>
+<p align="center"><수행할 문장1></p>
+<p align="center">...</p>
+<p>} else if(조건문) { </p>
+<p align="center"><수행할 문장1></p>
+<p align="center">...</p>
+<p>} else if(조건문) { </p>
+<p align="center"><수행할 문장1></p>
+<p align="center">...</p>
+<p>} else { </p>
+<p align="center"><수행할 문장1></p>
+<p align="center">...</p>
+<p>} </p>
+<p>if절의 값이 참이면 if문 바로 다음의 문장들이 실행되고 거짓이면 else if절로 제어가 넘어갑니다. else if절의 값이 참이면 else if문 바로 다음의 문장들이 실행되고 거짓이면 else절이 실행됩니다. else if절은 여러 개가 올 수 있고 else절은 생략이 가능합니다.
+<br>다음은 if-else if-else문의 예입니다.</p>
+<img src="초등.png" width=333 height=250>
+<p>'초등학생입니다'가 출력됩니다.</p>
+<hr>
+<p><b>미션</b></p>
+<p>위의 자바코드를 블록으로 바꿔봅시다.</p>
+<p>1. 아래 블록들 맨 위에 set to 블록을 추가해서 ‘고등학생입니다’가 출력되도록 age의 값을 18로 설정하세요.</p>
+<img src="ifelseif.png" width=347 height=190>

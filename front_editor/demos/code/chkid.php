@@ -1,5 +1,6 @@
 <?php
- $conn = mysqli_connect("localhost", "root", "123456", "jalock", "3306");
+// $conn = mysqli_connect("localhost", "root", "123456", "jalock", "3306");
+$conn = mysqli_connect("localhost", "yes", "Seo123456789!", "jalock");
  if (mysqli_connect_errno()){
      echo "연결실패<br>".mysqli_connect_error();
  }

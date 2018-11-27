@@ -1,7 +1,3 @@
-<?php
-// Start the session
-session_start();
-?>
 <head>
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

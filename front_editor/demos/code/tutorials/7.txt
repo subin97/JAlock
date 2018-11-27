@@ -1,0 +1,43 @@
+<b>07. 관계연산자</b></h4>
+<p>관계 연산자는 두 개의 피연산자를 비교하는 데 사용됩니다. 관계 연산자의 결과는 true(참) 아니면 false(거짓)을 반환합니다.</p>
+<table border="5" bordercolor="black">
+<tr>
+ <td width=200> </td>
+ <td width=70 align="center">잘록</td>
+ <td width=70 align="center">자바</td>
+</tr>
+<tr>
+ <td>x와 y가 같은가?</td>
+ <td align="center">x = y</td>
+ <td align="center">x == y</td>
+</tr>
+<tr>
+ <td>x와 y가 다른가?</td>
+ <td align="center">x ≠ y</td>
+ <td align="center">x != y</td>
+</tr>
+<tr>
+ <td>x가 y보다 작은가?</td>
+ <td align="center">x < y</td>
+ <td align="center">x < y</td>
+</tr>
+<tr>
+ <td>x가 y보다 작거나 같은가?</td>
+ <td align="center">x ≤ y</td>
+ <td align="center">x <= y</td>
+</tr>
+<tr>
+ <td>x가 y보다 큰가?</td>
+ <td align="center">x > y</td>
+ <td align="center">x > y</td>
+</tr>
+<tr>
+ <td>x가 y보다 크거나 같은가?</td>
+ <td align="center">x ≥ y</td>
+ <td align="center">x >= y</td>
+</tr>
+</table>
+<hr>
+<p><b>미션</b></p>
+<p>1. Logic에 있는 <img src="same.png" width=90 height=30> 블록을 끌어다 놓고 Math에 있는 숫자 블록 두 개를 빈 칸에 각각 넣으세요.</p>
+<p>2. 숫자 블록 두 개를 각각 6과 8로 바꾸고 =을 ≠로 바꾸세요. 그리고 Text에 있는 print 블록과 합치고 결과가 어떤지 확인해보세요.</p>

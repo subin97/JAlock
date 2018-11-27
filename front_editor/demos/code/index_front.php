@@ -72,7 +72,12 @@ body{
 </style>
 <body onload="getPageId()">
   <?php
-  $conn = mysqli_connect("localhost", "root", "123456", "jalock", "3306");
+//  local db
+//  $conn = mysqli_connect("localhost", "root", "123456", "jalock", "3306");
+
+// server db
+  $conn = mysqli_connect("localhost", "yes", "Seo123456789!", "jalock");
+
   if (mysqli_connect_errno()){
       echo "연결실패<br>".mysqli_connect_error();
   }
@@ -90,44 +95,59 @@ body{
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:doDisplay(1);">01.자바 소개</a>
+                    <a href="javascript:doDisplay(1);">1장.자바 소개</a>
                 </li>
                 <div id="ch1" style="display:none;">
                   <li>
-                    <a href="#">test1</a>
+                    <a href="#">&nbsp;&nbsp;01. 안녕 자바!</a>
                   </li>
                   <li>
-                    <a href="#">test1</a>
+                    <a href="#">&nbsp;&nbsp;02. 정수와 실수</a>
                   </li>
                   <li>
-                    <a href="#">test1</a>
+                    <a href="#">&nbsp;&nbsp;03. 논리형(boolean)</a>
                   </li>
                   <li>
-                    <a href="#">test1</a>
+                    <a href="#">&nbsp;&nbsp;04. 문자형과 문자열</a>
+                  </li>
+                  <li>
+                    <a href="#">&nbsp;&nbsp;05. 변수 </a>
+                  </li>
+                  <li>
+                    <a href="#">&nbsp;&nbsp;06. 산술 연산자</a>
+                  </li>
+                  <li>
+                    <a href="#">&nbsp;&nbsp;07. 관계 연산자</a>
                   </li>
                 </div>
                 <li>
-                    <a href="javascript:doDisplay(2);">02. 자바 프로그래밍 기초</a>
+                    <a href="javascript:doDisplay(2);">2장. 자바 프로그래밍 기초</a>
                 </li>
                 <div id="ch2" style="display:none;">
                   <li>
-                    <a href="#">test2</a>
+                    <a href="#">&nbsp;&nbsp;01. 논리 연산자</a>
                   </li>
                   <li>
-                    <a href="#">test2</a>
+                    <a href="#">&nbsp;&nbsp;02. if문</a>
                   </li>
                   <li>
-                    <a href="#">test2</a>
+                    <a href="#">&nbsp;&nbsp;03. if-else문</a>
                   </li>
                   <li>
-                    <a href="#">test2</a>
+                    <a href="#">&nbsp;&nbsp;04. if-else if-else문</a>
+                  </li>
+                  <li>
+                    <a href="#">&nbsp;&nbsp;05. while문</a>
+                  </li>
+                  <li>
+                    <a href="#">&nbsp;&nbsp;06. for문</a>
                   </li>
                 </div>
                 <li id="ch3">
-                    <a href="#">03. 객체 지향 프로그래밍</a>
+                    <a href="#">3장. 객체 지향 프로그래밍</a>
                 </li>
                 <li id="ch4">
-                    <a href="#">04. 상속, 인터페이스</a>
+                    <a href="#">4장. 상속, 인터페이스</a>
                 </li>
             </ul>
         </div>
@@ -223,7 +243,6 @@ body{
             <div id = "mycontent">
 
             <?php
-
               $query = "SELECT * FROM answer1 WHERE num=".$_GET['id'];
               $result = mysqli_query($conn, $query);
 
@@ -282,9 +301,13 @@ body{
         <div class="col-sm-3" style="text-align: center">
             <a href="/jalock/front_editor/demos/code/index_front.php?id=<?php echo $id_bef ?>&code=" class="btn btn-secondary">이전</a>
         </div>
+        <?php
+        if($userAnswer === $escaped['answer']){
+        ?>
         <div class="col-sm-3" style="text-align: center">
             <a href="/jalock/front_editor/demos/code/index_front.php?id=<?php echo $id_aft ?>&code=" class="btn btn-secondary">다음</a>
         </div>
+      <?php } ?>
         <div class="col-sm-3" style="text-align: center">
            <a href="/jalock/front_editor/demos/code/signout.php" class="btn btn-secondary">로그아웃</a>
         </div>
